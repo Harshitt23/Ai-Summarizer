@@ -55,4 +55,6 @@ Open http://localhost:5173 in your browser to view the project.
 
 🕸️ Snippets
 App.css
-index.html
+index.html 
+
+Thank you !!

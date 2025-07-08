@@ -34,7 +34,7 @@ Node.js
 npm (Node Package Manager)
 Cloning the Repository
 
-git clone 
+git clone https://github.com/Harshitt23/Ai-Summarizer.git
 cd project_ai_summarizer
 Installation
 

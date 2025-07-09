@@ -5,6 +5,7 @@ import {
   useLazyGetFactCheckQuery,
   useLazyGetRelatedArticlesQuery
 } from "../services/aiFeatures";
+import VideoBackground from "./VideoBackground";
 
 const AIFeatures = ({ articleUrl, summary }) => {
   const [activeTab, setActiveTab] = useState('qa');
@@ -31,7 +32,9 @@ const AIFeatures = ({ articleUrl, summary }) => {
     { code: 'ja', name: 'Japanese' },
     { code: 'ko', name: 'Korean' },
     { code: 'zh', name: 'Chinese' },
-    { code: 'ar', name: 'Arabic' }
+    { code: 'ar', name: 'Arabic' },
+    { code: 'hi', name: 'Hindi' },
+    { code: 'sa', name: 'Sanskrit' }
   ];
 
   // Mock data for demonstration
@@ -162,59 +165,60 @@ const AIFeatures = ({ articleUrl, summary }) => {
 
   return (
     <div className="mt-8 w-full max-w-4xl mx-auto">
-      <div className="modern_card">
-        <h3 className="text-2xl font-playfair font-bold text-gray-800 text-center mb-6">
-          AI-Powered <span className="text_gradient">Features</span>
-        </h3>
-        
-        <p className="text-center text-gray-600 font-inter mb-6">
-          Explore advanced AI capabilities to get more insights from your articles
-        </p>
+      <VideoBackground>
+        <div className="modern_card ai-features-container ai-features-with-video">
+          <div className="ai-features-header">
+            <h3 className="text-2xl font-playfair font-bold text-gray-800 text-center mb-6">
+              AI-Powered <span className="text_gradient">Features</span>
+            </h3>
+            
+            <p className="ai-features-description">
+              Explore advanced AI capabilities to get more insights from your articles
+            </p>
+          </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 mb-6 justify-center">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-lg font-inter font-medium transition-all duration-300 ${
-                activeTab === tab.id
-                  ? 'bg-primary-500 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              <span className="mr-2">{tab.icon}</span>
-              {tab.name}
-            </button>
-          ))}
-        </div>
+          {/* Tab Navigation */}
+          <div className="ai-features-tabs">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`ai-features-tab ${
+                  activeTab === tab.id ? 'active' : 'inactive'
+                }`}
+              >
+                <span className="tab-icon">{tab.icon}</span>
+                {tab.name}
+              </button>
+            ))}
+          </div>
 
-        {/* Tab Content */}
-        <div className="min-h-[300px]">
+          {/* Tab Content */}
+          <div className="ai-features-content">
           {/* Question & Answer Tab */}
           {activeTab === 'qa' && (
-            <div className="space-y-4">
+            <div className="ai-features-section">
               <div className="text-center mb-4">
                 <p className="text-gray-600 font-inter text-sm">
                   Ask specific questions about the article content
                 </p>
               </div>
-              <form onSubmit={handleQuestionSubmit} className="flex gap-2">
+              <form onSubmit={handleQuestionSubmit} className="ai-input-group">
                 <input
                   type="text"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   placeholder="Ask a question about the article..."
-                  className="flex-1 modern_input"
+                  className="ai-input"
                   required
                 />
                 <button
                   type="submit"
                   disabled={isAnswerFetching}
-                  className="primary_btn disabled:opacity-50"
+                  className="ai-button ai-button-primary"
                 >
                   {isAnswerFetching ? (
-                    <span className="loading-dots">
+                    <span className="loading-dots-enhanced">
                       <span></span><span></span><span></span>
                     </span>
                   ) : 'Ask'}
@@ -222,9 +226,9 @@ const AIFeatures = ({ articleUrl, summary }) => {
               </form>
 
               {answer && (
-                <div className="summary_box">
-                  <h4 className="font-poppins font-semibold text-gray-800 mb-2">Answer:</h4>
-                  <p className="font-inter text-gray-700 leading-relaxed">{answer}</p>
+                <div className="ai-result-card">
+                  <h4 className="ai-result-header">Answer:</h4>
+                  <p className="ai-result-content">{answer}</p>
                 </div>
               )}
             </div>
@@ -232,17 +236,17 @@ const AIFeatures = ({ articleUrl, summary }) => {
 
           {/* Translation Tab */}
           {activeTab === 'translate' && (
-            <div className="space-y-4">
+            <div className="ai-features-section">
               <div className="text-center mb-4">
                 <p className="text-gray-600 font-inter text-sm">
                   Get the summary translated into different languages
                 </p>
               </div>
-              <div className="flex gap-4 items-center">
+              <div className="ai-input-group">
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
-                  className="modern_input max-w-xs"
+                  className="ai-select"
                 >
                   {languages.map((lang) => (
                     <option key={lang.code} value={lang.code}>
@@ -253,10 +257,10 @@ const AIFeatures = ({ articleUrl, summary }) => {
                 <button
                   onClick={handleTranslation}
                   disabled={isTranslationFetching}
-                  className="accent_btn disabled:opacity-50"
+                  className="ai-button ai-button-accent"
                 >
                   {isTranslationFetching ? (
-                    <span className="loading-dots">
+                    <span className="loading-dots-enhanced">
                       <span></span><span></span><span></span>
                     </span>
                   ) : 'Translate'}
@@ -264,11 +268,11 @@ const AIFeatures = ({ articleUrl, summary }) => {
               </div>
 
               {translatedSummary && (
-                <div className="summary_box">
-                  <h4 className="font-poppins font-semibold text-gray-800 mb-2">
+                <div className="ai-result-card">
+                  <h4 className="ai-result-header">
                     Summary in {languages.find(l => l.code === selectedLanguage)?.name}:
                   </h4>
-                  <p className="font-inter text-gray-700 leading-relaxed">{translatedSummary}</p>
+                  <p className="ai-result-content">{translatedSummary}</p>
                 </div>
               )}
             </div>
@@ -276,7 +280,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
 
           {/* Fact Check Tab */}
           {activeTab === 'fact-check' && (
-            <div className="space-y-4">
+            <div className="ai-features-section">
               <div className="text-center mb-4">
                 <p className="text-gray-600 font-inter text-sm">
                   Verify claims and check factual accuracy
@@ -285,28 +289,28 @@ const AIFeatures = ({ articleUrl, summary }) => {
               <button
                 onClick={handleFactCheck}
                 disabled={isFactCheckFetching}
-                className="ghost_btn disabled:opacity-50"
+                className="ai-button ai-button-ghost"
               >
                 {isFactCheckFetching ? (
-                  <span className="loading-dots">
+                  <span className="loading-dots-enhanced">
                     <span></span><span></span><span></span>
                   </span>
                 ) : 'Check Facts'}
               </button>
 
               {factCheck && (
-                <div className="summary_box">
-                  <h4 className="font-poppins font-semibold text-gray-800 mb-2">Fact Check Results:</h4>
-                  <div className="space-y-2">
+                <div className="ai-result-card">
+                  <h4 className="ai-result-header">Fact Check Results:</h4>
+                  <div className="fact-check-grid">
                     {factCheck.claims?.map((claim, index) => (
-                      <div key={index} className="fact-check-claim">
+                      <div key={index} className="fact-check-item">
                         <p className="font-inter text-sm text-gray-600 mb-1">Claim {index + 1}:</p>
-                        <p className="font-inter text-gray-700">{claim.text}</p>
-                        <div className="flex items-center gap-2 mt-2">
-                          <span className={`verdict-badge ${
-                            claim.verdict === 'verified' ? 'verdict-verified' :
-                            claim.verdict === 'unverified' ? 'verdict-unverified' :
-                            'verdict-false'
+                        <p className="fact-check-claim-text">{claim.text}</p>
+                        <div className="fact-check-meta">
+                          <span className={`verdict-badge-enhanced ${
+                            claim.verdict === 'verified' ? 'verdict-verified-enhanced' :
+                            claim.verdict === 'unverified' ? 'verdict-unverified-enhanced' :
+                            'verdict-false-enhanced'
                           }`}>
                             {claim.verdict}
                           </span>
@@ -326,7 +330,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
 
           {/* Related Articles Tab */}
           {activeTab === 'related' && (
-            <div className="space-y-4">
+            <div className="ai-features-section">
               <div className="text-center mb-4">
                 <p className="text-gray-600 font-inter text-sm">
                   Discover similar articles and related content
@@ -335,36 +339,36 @@ const AIFeatures = ({ articleUrl, summary }) => {
               <button
                 onClick={handleRelatedArticles}
                 disabled={isRelatedFetching}
-                className="ghost_btn disabled:opacity-50"
+                className="ai-button ai-button-ghost"
               >
                 {isRelatedFetching ? (
-                  <span className="loading-dots">
+                  <span className="loading-dots-enhanced">
                     <span></span><span></span><span></span>
                   </span>
                 ) : 'Find Related Articles'}
               </button>
 
               {relatedArticles.length > 0 && (
-                <div className="space-y-3">
-                  <h4 className="font-poppins font-semibold text-gray-800">Related Articles:</h4>
+                <div className="related-articles-grid">
+                  <h4 className="ai-result-header">Related Articles:</h4>
                   {relatedArticles.map((article, index) => (
-                    <div key={index} className="link_card">
+                    <div key={index} className="related-article-card">
                       <div className="flex-1">
-                        <h5 className="font-inter font-semibold text-gray-800 mb-1">
+                        <h5 className="related-article-title">
                           {article.title}
                         </h5>
-                        <p className="font-inter text-sm text-gray-600 mb-2">
+                        <p className="related-article-description">
                           {article.description}
                         </p>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-500">
+                        <div className="related-article-meta">
+                          <span className="related-article-similarity">
                             Similarity: {article.similarity}%
                           </span>
                           <a
                             href={article.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-primary-600 hover:text-primary-700 font-medium"
+                            className="related-article-link"
                           >
                             Read Article →
                           </a>
@@ -377,7 +381,8 @@ const AIFeatures = ({ articleUrl, summary }) => {
             </div>
           )}
         </div>
-      </div>
+        </div>
+      </VideoBackground>
     </div>
   );
 };

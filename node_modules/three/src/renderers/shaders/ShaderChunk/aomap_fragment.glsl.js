@@ -6,14 +6,6 @@ export default /* glsl */`
 
 	reflectedLight.indirectDiffuse *= ambientOcclusion;
 
-	#if defined( USE_CLEARCOAT ) 
-		clearcoatSpecularIndirect *= ambientOcclusion;
-	#endif
-
-	#if defined( USE_SHEEN ) 
-		sheenSpecularIndirect *= ambientOcclusion;
-	#endif
-
 	#if defined( USE_ENVMAP ) && defined( STANDARD )
 
 		float dotNV = saturate( dot( geometryNormal, geometryViewDir ) );

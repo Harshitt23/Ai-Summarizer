@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { copy, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
+import AIFeatures from "./AIFeatures";
 
 const Demo = () => {
   const [article, setArticle] = useState({
@@ -141,6 +142,9 @@ const Demo = () => {
                   {article.summary}
                 </p>
               </div>
+              
+              {/* AI Features Section */}
+              <AIFeatures articleUrl={article.url} summary={article.summary} />
             </div>
           )
         )}

@@ -14,6 +14,12 @@ Tailwind CSS
 
 👉 Summary Generation: Users can input the URL of a lengthy article, and the web app utilizes AI to provide a concise summary of the article content.
 
+👉 AI-Powered Extras:
+   - 🤖 Question & Answer: Ask specific questions about article content
+   - 🌐 Translation: Get summaries in multiple languages (Spanish, French, German, etc.)
+   - ✅ Fact Checking: Verify claims and check factual accuracy
+   - 📚 Related Articles: Discover similar content and related articles
+
 👉 History Saving with Local Storage: The app includes a history feature, allowing users to save summaries locally, providing a convenient way to revisit and manage their reading history.
 
 👉 Copy to Clipboard Functionality: Enables users to easily share or store the summarized content by copying it to their clipboard.

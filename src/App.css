@@ -6,6 +6,7 @@
   Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
 */
 
+
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -117,20 +118,3 @@
 
 
 
-
-.video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.video-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.3); /* Optional dark filter for contrast */
-}

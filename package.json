@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postinstall": "node fix-vite-perm.js"
+   
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "if [ \"$VERCEL\" = \"1\" ]; then chmod +x node_modules/.bin/vite; fi"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

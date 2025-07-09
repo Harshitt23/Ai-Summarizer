@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,43 +23,64 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black;
+  @apply rounded-full border border-black bg-black py-2 px-6 text-sm font-poppins font-semibold text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 shadow-lg hover:shadow-xl;
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center;
+  @apply mt-5 text-5xl font-playfair font-bold leading-[1.15] text-black sm:text-6xl text-center animate-fade-in;
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent font-extrabold;
+}
+
+.modern_gradient {
+  @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-400 bg-clip-text text-transparent font-extrabold;
 }
 
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl text-center max-w-2xl;
+  @apply mt-5 text-lg text-gray-700 sm:text-xl text-center max-w-2xl font-inter font-medium leading-relaxed animate-slide-up;
 }
 
 .url_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-lg font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply block w-full rounded-xl border border-gray-200 bg-white/80 backdrop-blur-sm py-3 pl-10 pr-12 text-sm shadow-lg font-inter font-medium focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200 transition-all duration-300;
 }
 
 .submit_btn {
-  @apply hover:border-gray-700 hover:text-gray-700 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-gray-200 font-sans text-sm font-medium text-gray-400;
+  @apply hover:border-primary-500 hover:text-primary-600 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded-lg border border-gray-200 font-inter text-sm font-semibold text-gray-400 transition-all duration-300 hover:scale-110;
 }
 
 .link_card {
-  @apply p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer;
+  @apply p-4 flex justify-start items-center flex-row bg-white/90 backdrop-blur-sm border border-gray-200 gap-3 rounded-xl cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-all duration-300;
 }
 
 .copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  @apply w-8 h-8 rounded-full bg-white/20 shadow-lg backdrop-blur flex justify-center items-center cursor-pointer hover:bg-white/30 hover:scale-110 transition-all duration-300;
 }
 
 .blue_gradient {
-  @apply font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  @apply font-black bg-gradient-to-r from-primary-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent;
 }
 
 .summary_box {
-  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
+  @apply rounded-2xl border border-gray-200 bg-white/90 shadow-xl backdrop-blur-sm p-6 hover:shadow-2xl transition-all duration-300;
+}
+
+/* Additional modern styles */
+.glass_effect {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.text_gradient {
+  @apply bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent;
+}
+
+.hover_lift {
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+}
+
+.modern_card {
+  @apply bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-xl p-6 hover:shadow-2xl transition-all duration-300;
 }
 
 

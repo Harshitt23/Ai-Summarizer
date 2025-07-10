@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import SimpleAnalytics from "./SimpleAnalytics";
 
-const TextInput = ({ onTextSubmit, isProcessing }) => {
-  const [text, setText] = useState("");
-  const [charCount, setCharCount] = useState(0);
-
-  const handleTextChange = (e) => {
-    const value = e.target.value;
-    setText(value);
-    setCharCount(value.length);
-  };
+const TextInput = ({ value, onChange, onTextSubmit, isProcessing }) => {
+  const charCount = value ? value.length : 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.trim().length > 50) {
-      onTextSubmit(text.trim());
+    if (value.trim().length > 50) {
+      onTextSubmit(value.trim());
     } else {
       alert("Please enter at least 50 characters for summarization");
     }
@@ -31,8 +24,8 @@ const TextInput = ({ onTextSubmit, isProcessing }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="relative">
           <textarea
-            value={text}
-            onChange={handleTextChange}
+            value={value}
+            onChange={onChange}
             onKeyDown={handleKeyDown}
             placeholder="Paste your article text here... (Minimum 50 characters)"
             className="w-full h-48 p-4 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-inter text-sm"
@@ -75,8 +68,8 @@ const TextInput = ({ onTextSubmit, isProcessing }) => {
       </form>
 
       {/* Text Analysis - Only show when there's meaningful text */}
-      {text.length > 10 && (
-        <SimpleAnalytics text={text} />
+      {value && value.length > 10 && (
+        <SimpleAnalytics text={value} />
       )}
     </div>
   );

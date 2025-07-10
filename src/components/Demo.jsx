@@ -14,6 +14,7 @@ import EnhancedCard from "./EnhancedCard";
 import AnimatedButton from "./AnimatedButton";
 import GradientText from "./GradientText";
 import ResponsiveContainer from "./ResponsiveContainer";
+import RealTimeAnalytics from "./RealTimeAnalytics";
 
 const Demo = () => {
   const [article, setArticle] = useState({
@@ -27,6 +28,7 @@ const Demo = () => {
   const [inputMode, setInputMode] = useState("url"); // "url", "text", "pdf"
   const [summaryLength, setSummaryLength] = useState("medium");
   const [isProcessingFile, setIsProcessingFile] = useState(false);
+  const [textInputValue, setTextInputValue] = useState("");
 
   // RTK queries
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
@@ -181,7 +183,7 @@ const Demo = () => {
       <section className='w-full'>
       {/* Input Mode Selection */}
       <div className="mb-6">
-        <div className="flex justify-center gap-2 mb-4">
+        <div className="flex justify-center gap-4 mb-4">
           {[
             { id: "url", label: "URL", icon: "🔗" },
             { id: "text", label: "Text", icon: "📝" },
@@ -191,8 +193,9 @@ const Demo = () => {
               key={mode.id}
               onClick={() => setInputMode(mode.id)}
               variant={inputMode === mode.id ? "primary" : "ghost"}
-              icon={mode.icon}
-              className="btn-animate"
+              icon={<span className="text-lg">{mode.icon}</span>}
+              size="small"
+              className="btn-animate px-6 py-1 text-base"
             >
               {mode.label}
             </AnimatedButton>
@@ -240,10 +243,31 @@ const Demo = () => {
         )}
 
         {inputMode === "text" && (
-          <TextInput 
-            onTextSubmit={handleTextSubmit}
-            isProcessing={isTextLoading}
-          />
+          <>
+            <TextInput 
+              onTextSubmit={handleTextSubmit}
+              isProcessing={isTextLoading}
+              value={textInputValue}
+              onChange={e => setTextInputValue(e.target.value)}
+            />
+            {/* Compact analytics bar below text input */}
+            {textInputValue && textInputValue.trim().length >= 0 && (
+              <div className="flex gap-4 items-center mt-2 mb-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-lg text-sm font-medium text-blue-700">
+                {(() => {
+                  const words = textInputValue.trim().split(/\s+/).filter(Boolean).length;
+                  const readingTime = words > 0 ? Math.max(1, Math.ceil(words / 200)) : 1;
+                  return <>
+                    <span>Words: {words}</span>
+                    <span>•</span>
+                    <span>Reading Time: {readingTime} min</span>
+                  </>;
+                })()}
+              </div>
+            )}
+            {textInputValue && textInputValue.length > 0 && (
+              <RealTimeAnalytics text={textInputValue} />
+            )}
+          </>
         )}
 
         {inputMode === "pdf" && (

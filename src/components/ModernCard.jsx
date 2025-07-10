@@ -1,4 +1,5 @@
 import React from 'react';
+import './ModernCard.css';
 
 const ModernCard = ({ 
   children, 
@@ -8,18 +9,18 @@ const ModernCard = ({
   hover = true,
   animated = true
 }) => {
-  const baseClasses = 'rounded-2xl p-6 transition-all duration-300';
+  const baseClasses = 'rounded-3xl p-8 transition-all duration-300 shadow-lg';
   
   const variantClasses = {
-    default: 'bg-white/95 backdrop-blur-sm border border-gray-200/50 shadow-xl hover:shadow-2xl',
-    glass: 'bg-white/20 backdrop-blur-md border border-white/30 shadow-xl',
-    neon: 'bg-white/95 backdrop-blur-sm border border-primary-200 shadow-glow hover:shadow-glow-lg',
-    gradient: 'bg-gradient-to-br from-white/95 to-gray-50/95 backdrop-blur-sm border border-gray-200/50 shadow-xl',
-    dark: 'bg-gray-800/95 backdrop-blur-sm border border-gray-700/50 shadow-xl text-white'
+    default: 'bg-white/80 backdrop-blur-lg border border-gray-200/60 shadow-2xl hover:shadow-3xl',
+    glass: 'bg-white/10 backdrop-blur-2xl border border-white/20 shadow-xl glass-effect',
+    neon: 'bg-white/90 backdrop-blur-md border border-primary-200 shadow-glow neon-effect',
+    gradient: 'bg-gradient-to-br from-white/90 via-gray-100 to-gray-50/90 backdrop-blur-lg border border-gray-200/60 shadow-2xl',
+    dark: 'bg-gray-900/90 backdrop-blur-lg border border-gray-700/60 shadow-2xl text-white dark-effect'
   };
 
-  const hoverClasses = hover ? 'hover:scale-105 hover:shadow-2xl' : '';
-  const animatedClasses = animated ? 'animate-fade-in' : '';
+  const hoverClasses = hover ? 'hover:scale-105 hover:shadow-3xl' : '';
+  const animatedClasses = animated ? 'moderncard-fade-in' : '';
   const clickableClasses = onClick ? 'cursor-pointer' : '';
 
   return (

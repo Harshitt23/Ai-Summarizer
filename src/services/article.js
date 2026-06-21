@@ -1,16 +1,32 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
+import { callGroq, fetchArticle, lengthToSentences } from './groqClient'
 
 export const articleApi = createApi({
     reducerPath: 'articleApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/',
-    }),
+    baseQuery: fakeBaseQuery(),
     endpoints: (builder) => ({
         getSummary: builder.query({
-            query: (params) => `summarize?url=${encodeURIComponent(params.articleUrl)}&length=${params.length || 3}`,
+            queryFn: async (params) => {
+                try {
+                    const articleText = await fetchArticle(params.articleUrl);
+                    const sentences = lengthToSentences(params.length || 3);
+                    const prompt = `Summarize the following article in ${sentences}. Return only the summary text, no labels or preamble.\n\n${articleText.slice(0, 10000)}`;
+                    const summary = await callGroq(prompt);
+                    return { data: { summary } };
+                } catch (e) {
+                    return { error: { data: { error: e.message } } };
+                }
+            },
         }),
         getArticleContent: builder.query({
-            query: (params) => `extract?url=${encodeURIComponent(params.articleUrl)}`,
+            queryFn: async (params) => {
+                try {
+                    const article = await fetchArticle(params.articleUrl);
+                    return { data: { article } };
+                } catch (e) {
+                    return { error: { data: { error: e.message } } };
+                }
+            },
         }),
     }),
 })

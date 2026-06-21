@@ -45,7 +45,6 @@ const RealTimeAnalytics = ({ text, isVisible = true }) => {
         complexity
       };
 
-      console.log('Analytics calculated:', newAnalytics); // Debug log
       setAnalytics(newAnalytics);
     };
 

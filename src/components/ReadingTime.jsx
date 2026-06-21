@@ -47,16 +47,6 @@ const ReadingTime = ({ originalText, summaryText }) => {
     originalText !== "PDF Content (extracted)" &&
     originalWords >= 50; // Must have at least 50 words to be considered meaningful
 
-  // Debug logging
-  console.log('ReadingTime Debug:', {
-    originalText: originalText?.substring(0, 100) + '...',
-    originalWords,
-    summaryWords,
-    hasOriginalContent,
-    timeSaved,
-    wordsSaved
-  });
-
   return (
     <div className="modern_card">
       <h3 className="text-lg font-playfair font-bold text-gray-800 mb-4">

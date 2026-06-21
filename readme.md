@@ -1,66 +1,134 @@
-# Ai summarizer Using Gpt4.0
+# AI Summarizer
 
-🤖 Introduction
-Summarize any kind of article with just one click using the powerful OpenAI model.
+An open-source article summarizer that transforms lengthy articles into clear, concise summaries — powered by **Groq** (Llama 3.3) and **Jina AI Reader**.
 
+---
 
-⚙️ Tech Stack
-React.js
-TypeScript
-Redux Toolkit
-Tailwind CSS
-🔋 Features
-👉 Modern User Interface: A modern and user-friendly interface, offering an intuitive experience for users.
+## Tech Stack
 
-👉 Summary Generation: Users can input the URL of a lengthy article, and the web app utilizes AI to provide a concise summary of the article content.
+- **React 18** — UI
+- **Redux Toolkit + RTK Query** — state management & API calls
+- **Tailwind CSS** — styling
+- **Groq API** — AI summarization & features (Llama 3.3 70B)
+- **Jina AI Reader** — article content extraction from URLs
+- **MyMemory API** — translation
+- **Express.js** — local backend proxy
 
-👉 AI-Powered Extras:
-   - 🤖 Question & Answer: Ask specific questions about article content
-   - 🌐 Translation: Get summaries in multiple languages (Spanish, French, German, etc.)
-   - ✅ Fact Checking: Verify claims and check factual accuracy
-   - 📚 Related Articles: Discover similar content and related articles
+---
 
-👉 History Saving with Local Storage: The app includes a history feature, allowing users to save summaries locally, providing a convenient way to revisit and manage their reading history.
+## Features
 
-👉 Copy to Clipboard Functionality: Enables users to easily share or store the summarized content by copying it to their clipboard.
+- **URL Summarization** — paste any article URL and get an AI-generated summary
+- **Text Summarization** — paste raw text directly for instant summarization
+- **PDF Upload** — upload a PDF file for summarization
+- **Summary Length Control** — choose Short, Medium, or Detailed output
+- **Reading Time Analysis** — see time saved vs. reading the full article
+- **Keyword Extraction** — auto-extracted key terms from the summary
+- **Export Options** — download your summary as TXT, HTML, Word, or JSON
+- **Dark Mode** — system-aware dark/light toggle
+- **History** — past summaries saved in localStorage
+- **AI Features Panel:**
+  - Question & Answer — ask anything about the article
+  - Translation — summarize in 12 languages
+  - Fact Check — verify key claims from the article
+  - Related Topics — discover what to read next
 
-👉 Advanced RTK Query API Requests: Utilizes the advanced capabilities of Redux Toolkit (RTK) Query for making API requests. These requests fire conditionally based on specific criteria, optimizing data fetching and management.
+---
 
-and many more, including code architecture and reusability
+## Quick Start
 
-🤸 Quick Start
-Follow these steps to set up the project locally on your machine.
+### Prerequisites
 
-Prerequisites
+- Node.js 18+
+- npm
+- A free [Groq API key](https://console.groq.com) (takes 2 minutes, no credit card)
 
-Make sure you have the following installed on your machine:
+### 1. Clone the repo
 
-Git
-Node.js
-npm (Node Package Manager)
-Cloning the Repository
-
+```bash
 git clone https://github.com/Harshitt23/Ai-Summarizer.git
-cd project_ai_summarizer
-Installation
+cd Ai-Summarizer
+```
 
-Install the project dependencies using npm:
+### 2. Install frontend dependencies
 
+```bash
 npm install
-Set Up Environment Variables
+```
 
-Create a new file named .env in the root of your project and add the following content:
+### 3. Install backend dependencies
 
-VITE_RAPID_API_ARTICLE_KEY=
-Replace the placeholder values with your actual credentials. You can obtain these credentials by signing up on the Rapid API website.
+```bash
+cd extractor-backend
+npm install
+```
 
-Running the Project
+### 4. Add your Groq API key
 
+Create `extractor-backend/.env`:
+
+```
+GEMINI_API_KEY=gsk_your_groq_key_here
+```
+
+Get your free key at **console.groq.com** → API Keys → Create API Key
+
+### 5. Run the project (two terminals)
+
+**Terminal 1 — backend:**
+```bash
+cd extractor-backend
+npm start
+```
+
+**Terminal 2 — frontend:**
+```bash
 npm run dev
-Open http://localhost:5173 in your browser to view the project.
+```
 
-🕸️ Snippets
-App.css
-index.html 
+Open **http://localhost:5173** in your browser.
 
-Thank you !!
+---
+
+## How It Works
+
+```
+Browser → Express Backend (localhost:5000)
+               ↓
+    Jina AI Reader (URL → clean article text)
+               +
+    Groq API / Llama 3.3 (text → summary / QA / fact-check)
+               +
+    MyMemory API (translation)
+```
+
+- **Jina AI Reader** (`r.jina.ai`) extracts clean readable text from any URL for free with no API key required.
+- **Groq** runs Llama 3.3 70B inference at high speed on their free tier (14,400 requests/day).
+- **MyMemory** handles translation across 12 languages for free.
+
+---
+
+## Environment Variables
+
+| File | Variable | Description |
+|---|---|---|
+| `extractor-backend/.env` | `GEMINI_API_KEY` | Your Groq API key (`gsk_...`) |
+
+No frontend environment variables are required.
+
+---
+
+## Project Structure
+
+```
+Ai-Summarizer/
+├── src/
+│   ├── components/        # React components
+│   ├── services/          # RTK Query API slices
+│   └── assets/            # SVG icons
+├── extractor-backend/     # Express backend (Groq + Jina proxy)
+│   ├── server.js
+│   └── .env               # Your Groq API key goes here
+├── public/
+└── package.json
+```

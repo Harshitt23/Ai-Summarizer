@@ -57,10 +57,10 @@ const KeywordExtractor = ({ text }) => {
   }, [text]);
 
   const getImportanceColor = (importance) => {
-    if (importance > 5) return "bg-red-100 text-red-800 border-red-200";
-    if (importance > 3) return "bg-orange-100 text-orange-800 border-orange-200";
-    if (importance > 1) return "bg-yellow-100 text-yellow-800 border-yellow-200";
-    return "bg-blue-100 text-blue-800 border-blue-200";
+    if (importance > 5) return "bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-300 dark:border-red-700";
+    if (importance > 3) return "bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-700";
+    if (importance > 1) return "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-300 dark:border-yellow-700";
+    return "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-700";
   };
 
   const getImportanceSize = (importance) => {
@@ -77,14 +77,14 @@ const KeywordExtractor = ({ text }) => {
 
   return (
     <div className="modern_card">
-      <h3 className="text-lg font-playfair font-bold text-gray-800 mb-4">
+      <h3 className="text-lg font-playfair font-bold text-gray-800 dark:text-white mb-4">
         Key Terms & Concepts
       </h3>
-      
+
       {isProcessing && shouldShowLoading ? (
         <div className="flex items-center justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <span className="ml-2 text-gray-600">Extracting keywords...</span>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400"></div>
+          <span className="ml-2 text-gray-600 dark:text-gray-400">Extracting keywords...</span>
         </div>
       ) : (
         <div className="space-y-4">
@@ -102,32 +102,32 @@ const KeywordExtractor = ({ text }) => {
               </span>
             ))}
           </div>
-          
+
           {keywords.length > 0 && (
-            <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+            <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <p className="font-semibold text-gray-800">Total Keywords</p>
-                  <p className="text-2xl font-bold text-blue-600">{keywords.length}</p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">Total Keywords</p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{keywords.length}</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">Most Frequent</p>
-                  <p className="text-lg font-bold text-green-600">
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">Most Frequent</p>
+                  <p className="text-lg font-bold text-green-600 dark:text-green-400">
                     {keywords[0]?.word || 'N/A'}
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">Avg. Importance</p>
-                  <p className="text-lg font-bold text-purple-600">
+                  <p className="font-semibold text-gray-800 dark:text-gray-200">Avg. Importance</p>
+                  <p className="text-lg font-bold text-purple-600 dark:text-purple-400">
                     {Math.round(keywords.reduce((sum, k) => sum + k.importance, 0) / keywords.length)}%
                   </p>
                 </div>
               </div>
             </div>
           )}
-          
-          <div className="text-xs text-gray-500 mt-2">
-            💡 Keywords are extracted based on frequency and relevance. 
+
+          <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            💡 Keywords are extracted based on frequency and relevance.
             Larger, more colorful tags indicate higher importance.
           </div>
         </div>

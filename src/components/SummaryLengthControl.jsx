@@ -8,27 +8,27 @@ const SummaryLengthControl = ({ selectedLength, onLengthChange }) => {
       label: "Short",
       description: "Quick overview (1-2 sentences)",
       icon: "⚡",
-      color: "bg-green-100 text-green-800 border-green-200"
+      color: "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-700"
     },
     {
       value: "medium",
       label: "Medium",
       description: "Balanced summary (3-4 sentences)",
       icon: "📝",
-      color: "bg-blue-100 text-blue-800 border-blue-200"
+      color: "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-700"
     },
     {
       value: "long",
       label: "Detailed",
       description: "Comprehensive summary (5+ sentences)",
       icon: "📚",
-      color: "bg-purple-100 text-purple-800 border-purple-200"
+      color: "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-700"
     }
   ];
 
   return (
     <ModernCard variant="glass" animated className="max-w-xl mx-auto py-4 px-4">
-      <h3 className="text-lg font-bold text-gray-800 mb-2 tracking-tight flex items-center gap-2">
+      <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 tracking-tight flex items-center gap-2">
         <span className="inline-block bg-gradient-to-r from-blue-400 to-purple-500 text-white px-2 py-0.5 rounded-lg text-sm shadow-sm">Summary Length</span>
       </h3>
       
@@ -41,7 +41,7 @@ const SummaryLengthControl = ({ selectedLength, onLengthChange }) => {
             className={`w-full py-2 px-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center gap-2 group shadow-sm hover:scale-[1.02] hover:shadow-md
               ${selectedLength === option.value
                 ? `${option.color} border-2 border-blue-400 ring-2 ring-blue-200`
-                : "border-gray-200 hover:border-blue-200 bg-white/80"}
+                : "border-gray-200 dark:border-gray-600 hover:border-blue-200 bg-white/80 dark:bg-gray-800/80 dark:text-gray-200"}
             `}
           >
             <span className="text-xl drop-shadow-sm group-hover:scale-105 transition-transform duration-200">{option.icon}</span>
@@ -68,7 +68,7 @@ const SummaryLengthControl = ({ selectedLength, onLengthChange }) => {
         ))}
       </div>
       
-      <div className="mt-3 p-2 bg-gradient-to-r from-gray-50 to-white/80 rounded-lg shadow-inner flex items-center gap-2 text-xs text-gray-700">
+      <div className="mt-3 p-2 bg-gradient-to-r from-gray-50 to-white/80 dark:from-gray-800/80 dark:to-gray-700/60 rounded-lg shadow-inner flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
         <span className="text-base">💡</span>
         <span>
           Choose the length that best fits your needs. 

@@ -252,7 +252,7 @@ const Demo = () => {
             />
             {/* Compact analytics bar below text input */}
             {textInputValue && textInputValue.trim().length >= 0 && (
-              <div className="flex gap-4 items-center mt-2 mb-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-lg text-sm font-medium text-blue-700">
+              <div className="flex gap-4 items-center mt-2 mb-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-700 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-300">
                 {(() => {
                   const words = textInputValue.trim().split(/\s+/).filter(Boolean).length;
                   const readingTime = words > 0 ? Math.max(1, Math.ceil(words / 200)) : 1;
@@ -310,16 +310,16 @@ const Demo = () => {
         {(isFetching || isFetchingContent || isTextLoading || isProcessingFile) ? (
           <div className='flex flex-col items-center gap-4'>
             <img src={loader} alt='loader' className='w-20 h-20 object-contain animate-pulse-slow' />
-            <p className='font-inter text-gray-600 font-medium'>
+            <p className='font-inter text-gray-600 dark:text-gray-400 font-medium'>
               {isProcessingFile ? 'Processing your PDF...' : 'Processing your content...'}
             </p>
           </div>
         ) : error ? (
           <div className='modern_card'>
-            <p className='font-inter font-bold text-black text-center'>
+            <p className='font-inter font-bold text-black dark:text-white text-center'>
               Well, that wasn't supposed to happen...
               <br />
-              <span className='font-inter font-normal text-gray-700'>
+              <span className='font-inter font-normal text-gray-700 dark:text-gray-300'>
                 {error?.data?.error}
               </span>
             </p>
@@ -327,12 +327,12 @@ const Demo = () => {
         ) : (
           article.summary && (
             <div className='flex flex-col gap-6 animate-fade-in'>
-              <h2 className='font-playfair font-bold text-gray-800 text-2xl text-center'>
+              <h2 className='font-playfair font-bold text-gray-800 dark:text-white text-2xl text-center'>
                 Article <GradientText variant="ocean" animated={true}>Summary</GradientText>
               </h2>
-              
+
               <EnhancedCard variant="glass" glow={true} className="summary_box">
-                <p className='font-inter font-medium text-gray-800 leading-relaxed'>
+                <p className='font-inter font-medium text-gray-800 dark:text-gray-200 leading-relaxed'>
                   {article.summary}
                 </p>
               </EnhancedCard>

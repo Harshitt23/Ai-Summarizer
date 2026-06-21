@@ -7,6 +7,95 @@
   z-index: -1;
   background: linear-gradient(135deg, #ffffff 0%, #fff8e1 20%, #ffecb3 40%, #ffcc80 60%, #ffb74d 80%, #ff9800 100%);
   overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+/* Dark mode background */
+.dark .animated-background {
+  background: linear-gradient(135deg, #070714 0%, #0b0d20 25%, #0a1628 50%, #0d1117 75%, #0f0f1a 100%);
+}
+
+.dark .shape {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(99, 102, 241, 0.03) 100%);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), inset 0 0 20px rgba(139, 92, 246, 0.05);
+}
+
+.dark .shape::before {
+  background: radial-gradient(circle, rgba(139, 92, 246, 1) 0%, rgba(99, 102, 241, 0.8) 50%, rgba(139, 92, 246, 0.3) 100%);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+}
+
+.dark .shape::after {
+  background: radial-gradient(circle, rgba(99, 102, 241, 1) 0%, rgba(139, 92, 246, 0.8) 50%, rgba(99, 102, 241, 0.3) 100%);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.dark .geometric-shape {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+.dark .triangle {
+  border-bottom-color: rgba(99, 102, 241, 0.3);
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
+}
+
+.dark .square {
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.dark .hexagon {
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.08));
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.dark .robot-eye {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(99, 102, 241, 0.4) 50%, rgba(139, 92, 246, 0.1) 100%);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+.dark .circuit-board {
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.dark .circuit-board::before {
+  background:
+    linear-gradient(90deg, rgba(99, 102, 241, 0.25) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(99, 102, 241, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .robot-arm {
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.2));
+}
+
+.dark .robot-arm::after {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.6), rgba(99, 102, 241, 0.3));
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.dark .tech-circle {
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.dark .tech-circle::before {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.dark .tech-circle::after {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.dark .particle {
+  background: radial-gradient(circle, rgba(139, 92, 246, 1) 0%, rgba(99, 102, 241, 0.8) 50%, rgba(139, 92, 246, 0.3) 100%);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+}
+
+.dark .wave {
+  background: linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.04) 50%, transparent 70%);
 }
 
 .floating-shapes {

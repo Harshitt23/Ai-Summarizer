@@ -126,13 +126,13 @@ const ExportOptions = ({ summary, articleUrl, title = "Article Summary" }) => {
 
   return (
     <div className="modern_card">
-      <h3 className="text-lg font-playfair font-bold text-gray-800 mb-4">
+      <h3 className="text-lg font-playfair font-bold text-gray-800 dark:text-white mb-4">
         Export Summary
       </h3>
-      
+
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Export Format
           </label>
           <div className="grid grid-cols-2 gap-2">
@@ -142,8 +142,8 @@ const ExportOptions = ({ summary, articleUrl, title = "Article Summary" }) => {
                 onClick={() => setExportFormat(format.value)}
                 className={`p-3 rounded-lg border transition-all duration-200 ${
                   exportFormat === format.value
-                    ? "border-blue-500 bg-blue-50 text-blue-700"
-                    : "border-gray-300 hover:border-gray-400"
+                    ? "border-blue-500 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
+                    : "border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:text-gray-300"
                 }`}
               >
                 <div className="flex items-center gap-2">

@@ -49,40 +49,38 @@ const ReadingTime = ({ originalText, summaryText }) => {
 
   return (
     <div className="modern_card">
-      <h3 className="text-lg font-playfair font-bold text-gray-800 mb-4">
+      <h3 className="text-lg font-playfair font-bold text-gray-800 dark:text-white mb-4">
         Reading Time Analysis
       </h3>
-      
+
       {hasOriginalContent ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Original Content */}
-          <div className="p-4 bg-gray-50 rounded-lg">
+          <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-lg">📄</span>
-              <h4 className="font-semibold text-gray-800">Original Content</h4>
+              <h4 className="font-semibold text-gray-800 dark:text-gray-200">Original Content</h4>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-medium">{originalWords}</span> words
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-medium">{originalTime}</span> min read
                 <span className="ml-1">{getTimeIcon(originalTime)}</span>
               </p>
             </div>
           </div>
 
-          {/* Summary */}
-          <div className="p-4 bg-blue-50 rounded-lg">
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-lg">📝</span>
-              <h4 className="font-semibold text-gray-800">Summary</h4>
+              <h4 className="font-semibold text-gray-800 dark:text-gray-200">Summary</h4>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-medium">{summaryWords}</span> words
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 <span className="font-medium">{summaryTime}</span> min read
                 <span className="ml-1">{getTimeIcon(summaryTime)}</span>
               </p>
@@ -90,16 +88,16 @@ const ReadingTime = ({ originalText, summaryText }) => {
           </div>
         </div>
       ) : (
-        <div className="p-4 bg-blue-50 rounded-lg">
+        <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg">📝</span>
-            <h4 className="font-semibold text-gray-800">Summary</h4>
+            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Summary</h4>
           </div>
           <div className="space-y-1">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               <span className="font-medium">{summaryWords}</span> words
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               <span className="font-medium">{summaryTime}</span> min read
               <span className="ml-1">{getTimeIcon(summaryTime)}</span>
             </p>
@@ -107,45 +105,43 @@ const ReadingTime = ({ originalText, summaryText }) => {
         </div>
       )}
 
-      {/* Savings - Only show when we have meaningful original content and actual savings */}
       {hasOriginalContent && originalTime > 0 && timeSaved > 0 && wordsSaved > 0 && (
-        <div className="mt-4 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+        <div className="mt-4 p-4 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg border border-green-200 dark:border-green-700/50">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg">⏱️</span>
-            <h4 className="font-semibold text-gray-800">Time Saved</h4>
+            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Time Saved</h4>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                 {timeSaved} min
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {timeSavingsPercentage}% faster
               </p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-blue-600">
+              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {wordsSaved} words
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {wordSavingsPercentage}% shorter
               </p>
             </div>
           </div>
-          
-          <div className="mt-3 p-2 bg-white rounded border">
-            <p className="text-xs text-gray-600">
-              💡 You saved {timeSaved} minutes of reading time! 
+
+          <div className="mt-3 p-2 bg-white dark:bg-gray-800 rounded border dark:border-gray-600">
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              💡 You saved {timeSaved} minutes of reading time!
               That's equivalent to {Math.round(timeSaved * 60 / 200)}% of your attention span.
             </p>
           </div>
         </div>
       )}
 
-      {/* Show message when no savings are available */}
       {!hasOriginalContent && (
-        <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-          <p className="text-sm text-gray-600">
+        <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             💡 Original content not available for comparison. Time saved and word count analysis requires the full article content.
           </p>
         </div>

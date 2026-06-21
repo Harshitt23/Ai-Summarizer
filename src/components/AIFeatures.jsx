@@ -168,7 +168,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
       <VideoBackground>
         <div className="modern_card ai-features-container ai-features-with-video">
           <div className="ai-features-header">
-            <h3 className="text-2xl font-playfair font-bold text-gray-800 text-center mb-6">
+            <h3 className="text-2xl font-playfair font-bold text-gray-800 dark:text-white text-center mb-6">
               AI-Powered <span className="text_gradient">Features</span>
             </h3>
             
@@ -199,7 +199,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
           {activeTab === 'qa' && (
             <div className="ai-features-section">
               <div className="text-center mb-4">
-                <p className="text-gray-600 font-inter text-sm">
+                <p className="text-gray-600 dark:text-gray-400 font-inter text-sm">
                   Ask specific questions about the article content
                 </p>
               </div>
@@ -238,7 +238,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
           {activeTab === 'translate' && (
             <div className="ai-features-section">
               <div className="text-center mb-4">
-                <p className="text-gray-600 font-inter text-sm">
+                <p className="text-gray-600 dark:text-gray-400 font-inter text-sm">
                   Get the summary translated into different languages
                 </p>
               </div>
@@ -282,7 +282,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
           {activeTab === 'fact-check' && (
             <div className="ai-features-section">
               <div className="text-center mb-4">
-                <p className="text-gray-600 font-inter text-sm">
+                <p className="text-gray-600 dark:text-gray-400 font-inter text-sm">
                   Verify claims and check factual accuracy
                 </p>
               </div>
@@ -332,7 +332,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
           {activeTab === 'related' && (
             <div className="ai-features-section">
               <div className="text-center mb-4">
-                <p className="text-gray-600 font-inter text-sm">
+                <p className="text-gray-600 dark:text-gray-400 font-inter text-sm">
                   Discover similar articles and related content
                 </p>
               </div>

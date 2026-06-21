@@ -28,41 +28,41 @@ const TextInput = ({ value, onChange, onTextSubmit, isProcessing }) => {
             onChange={onChange}
             onKeyDown={handleKeyDown}
             placeholder="Paste your article text here... (Minimum 50 characters)"
-            className="w-full h-48 p-4 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-inter text-sm"
+            className="w-full h-48 p-4 border border-gray-300 dark:border-gray-600 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-inter text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
             disabled={isProcessing}
           />
-          <div className="absolute bottom-2 right-2 text-xs text-gray-500">
+          <div className="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400">
             {charCount} characters
           </div>
         </div>
-        
+
         <div className="flex justify-between items-center">
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600 dark:text-gray-400">
             {charCount < 50 ? (
-              <span className="text-red-500">
+              <span className="text-red-500 dark:text-red-400">
                 Need {50 - charCount} more characters
               </span>
             ) : (
-              <span className="text-green-600">
+              <span className="text-green-600 dark:text-green-400">
                 ✓ Ready to summarize
               </span>
             )}
           </div>
-          
+
           <button
             type="submit"
             disabled={charCount < 50 || isProcessing}
             className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
               charCount >= 50 && !isProcessing
                 ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
             }`}
           >
             {isProcessing ? "Processing..." : "Summarize Text"}
           </button>
         </div>
-        
-        <div className="text-xs text-gray-500">
+
+        <div className="text-xs text-gray-500 dark:text-gray-400">
           💡 Tip: Press Ctrl+Enter to submit quickly
         </div>
       </form>

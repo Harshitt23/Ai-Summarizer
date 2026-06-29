@@ -16,9 +16,9 @@
 }
 
 .dark .shape {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(99, 102, 241, 0.03) 100%);
-  border-color: rgba(99, 102, 241, 0.35);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), inset 0 0 20px rgba(139, 92, 246, 0.05);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(99, 102, 241, 0.08) 100%);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.3), inset 0 0 20px rgba(139, 92, 246, 0.1);
 }
 
 .dark .shape::before {
@@ -36,18 +36,18 @@
 }
 
 .dark .triangle {
-  border-bottom-color: rgba(99, 102, 241, 0.3);
-  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
+  border-bottom-color: rgba(99, 102, 241, 0.55);
+  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.6));
 }
 
 .dark .square {
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
-  border-color: rgba(99, 102, 241, 0.4);
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.35), rgba(139, 92, 246, 0.2));
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
 .dark .hexagon {
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.08));
-  border-color: rgba(139, 92, 246, 0.35);
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.18));
+  border-color: rgba(139, 92, 246, 0.6);
 }
 
 .dark .robot-eye {
@@ -57,14 +57,14 @@
 }
 
 .dark .circuit-board {
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
-  border-color: rgba(99, 102, 241, 0.25);
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.12));
+  border-color: rgba(99, 102, 241, 0.5);
 }
 
 .dark .circuit-board::before {
   background:
-    linear-gradient(90deg, rgba(99, 102, 241, 0.25) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(99, 102, 241, 0.25) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(99, 102, 241, 0.45) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(99, 102, 241, 0.45) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -78,15 +78,15 @@
 }
 
 .dark .tech-circle {
-  border-color: rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
 .dark .tech-circle::before {
-  border-color: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
 }
 
 .dark .tech-circle::after {
-  border-color: rgba(139, 92, 246, 0.4);
+  border-color: rgba(139, 92, 246, 0.65);
 }
 
 .dark .particle {
@@ -95,7 +95,7 @@
 }
 
 .dark .wave {
-  background: linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.04) 50%, transparent 70%);
+  background: linear-gradient(45deg, transparent 30%, rgba(99, 102, 241, 0.12) 50%, transparent 70%);
 }
 
 .floating-shapes {

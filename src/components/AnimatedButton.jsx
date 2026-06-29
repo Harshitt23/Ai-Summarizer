@@ -26,7 +26,7 @@ const AnimatedButton = ({
       case "outline":
         return "bg-transparent text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white";
       case "ghost":
-        return "bg-white/30 backdrop-blur-md text-blue-700 hover:bg-blue-50 border-transparent shadow-glass";
+        return "bg-white/30 backdrop-blur-md text-blue-700 hover:bg-blue-50 border-transparent shadow-glass dark:bg-gray-700/50 dark:text-blue-200 dark:hover:bg-gray-600/60 dark:border-gray-600";
       default:
         return "bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white hover:from-blue-600 hover:to-purple-600 border-blue-600 shadow-primary";
     }

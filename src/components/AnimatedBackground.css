@@ -10,25 +10,26 @@
   transition: background 0.4s ease;
 }
 
-/* Dark mode background — deep animated nebula */
+/* Dark mode background — deep animated nebula (uniform brightness, no dark corner) */
 .dark .animated-background {
-  background: linear-gradient(135deg, #0a0a1f 0%, #0d1030 22%, #0a1838 48%, #140a2e 72%, #0a0a1f 100%);
-  background-size: 200% 200%;
+  background: linear-gradient(135deg, #15153a 0%, #1d1545 25%, #16204c 50%, #231650 75%, #15153a 100%);
+  background-size: 220% 220%;
   animation: dark-gradient-shift 24s ease infinite;
 }
 
-/* Aurora / nebula glow layer (dark mode only) */
+/* Aurora / nebula glow layer (dark mode only) — evenly spread top→bottom */
 .dark .animated-background::before {
   content: '';
   position: absolute;
-  inset: -25%;
+  inset: -10%;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 22%, rgba(99, 102, 241, 0.42), transparent 62%),
-    radial-gradient(ellipse 55% 48% at 85% 15%, rgba(139, 92, 246, 0.40), transparent 62%),
-    radial-gradient(ellipse 58% 48% at 62% 82%, rgba(56, 189, 248, 0.30), transparent 62%),
-    radial-gradient(ellipse 48% 38% at 28% 78%, rgba(168, 85, 247, 0.36), transparent 62%),
-    radial-gradient(ellipse 40% 35% at 50% 45%, rgba(79, 70, 229, 0.22), transparent 65%);
-  filter: blur(52px);
+    radial-gradient(ellipse 50% 30% at 15% 12%, rgba(99, 102, 241, 0.45), transparent 60%),
+    radial-gradient(ellipse 50% 30% at 82% 22%, rgba(139, 92, 246, 0.45), transparent 60%),
+    radial-gradient(ellipse 45% 30% at 35% 42%, rgba(79, 70, 229, 0.38), transparent 62%),
+    radial-gradient(ellipse 45% 30% at 80% 55%, rgba(168, 85, 247, 0.40), transparent 62%),
+    radial-gradient(ellipse 50% 32% at 22% 75%, rgba(56, 189, 248, 0.36), transparent 62%),
+    radial-gradient(ellipse 55% 35% at 65% 90%, rgba(139, 92, 246, 0.42), transparent 62%);
+  filter: blur(55px);
   animation: aurora-drift 22s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;

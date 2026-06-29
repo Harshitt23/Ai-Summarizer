@@ -25,10 +25,15 @@
 
 /* ── Dark Mode ────────────────────────────────────────────────────────────── */
 
-/* Page background */
-html.dark,
-.dark body {
+/* Page background — keep html as a load-time fallback, but make body
+   transparent so the fixed AnimatedBackground shows through the whole
+   viewport (an opaque body bg was covering it in the content region). */
+html.dark {
   background-color: #0f0f1a;
+}
+
+.dark body {
+  background-color: transparent;
 }
 
 .dark .app {

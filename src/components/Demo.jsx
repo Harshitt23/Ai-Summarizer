@@ -293,10 +293,10 @@ const Demo = () => {
                 />
               </div>
               <div className='flex-1'>
-                <p className='font-inter text-primary-700 font-medium text-sm truncate'>
+                <p className='font-inter text-primary-700 dark:text-primary-300 font-medium text-sm truncate'>
                   {item.url}
                 </p>
-                <p className='text-xs text-gray-500'>
+                <p className='text-xs text-gray-500 dark:text-gray-400'>
                   {item.type === "url" ? "🔗 URL" : item.type === "text" ? "📝 Text" : "📄 PDF"}
                 </p>
               </div>

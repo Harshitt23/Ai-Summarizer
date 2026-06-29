@@ -50,8 +50,8 @@ const FileUpload = ({ onFileUpload, isProcessing }) => {
       <div
         className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300 ${
           dragActive
-            ? "border-blue-500 bg-blue-50"
-            : "border-gray-300 hover:border-gray-400"
+            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
+            : "border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500"
         } ${isProcessing ? "opacity-50 pointer-events-none" : ""}`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -69,13 +69,13 @@ const FileUpload = ({ onFileUpload, isProcessing }) => {
         {isProcessing ? (
           <div className="flex flex-col items-center gap-4">
             <img src={loader} alt="loader" className="w-12 h-12 object-contain animate-pulse-slow" />
-            <p className="font-inter text-gray-600 font-medium">Processing PDF...</p>
+            <p className="font-inter text-gray-600 dark:text-gray-300 font-medium">Processing PDF...</p>
           </div>
         ) : (
           <>
             <div className="mb-4">
               <svg
-                className="mx-auto h-12 w-12 text-gray-400"
+                className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
                 stroke="currentColor"
                 fill="none"
                 viewBox="0 0 48 48"
@@ -90,16 +90,16 @@ const FileUpload = ({ onFileUpload, isProcessing }) => {
               </svg>
             </div>
             
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 dark:text-gray-300">
               <p className="mb-2">
                 <span className="font-semibold">Click to upload</span> or drag and drop
               </p>
               <p className="text-xs">PDF files only</p>
             </div>
-            
+
             {selectedFile && (
-              <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-sm text-green-800">
+              <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg">
+                <p className="text-sm text-green-800 dark:text-green-300">
                   Selected: {selectedFile.name}
                 </p>
               </div>

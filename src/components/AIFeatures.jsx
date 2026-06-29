@@ -304,7 +304,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
                   <div className="fact-check-grid">
                     {factCheck.claims?.map((claim, index) => (
                       <div key={index} className="fact-check-item">
-                        <p className="font-inter text-sm text-gray-600 mb-1">Claim {index + 1}:</p>
+                        <p className="font-inter text-sm text-gray-600 dark:text-gray-400 mb-1">Claim {index + 1}:</p>
                         <p className="fact-check-claim-text">{claim.text}</p>
                         <div className="fact-check-meta">
                           <span className={`verdict-badge-enhanced ${
@@ -315,7 +315,7 @@ const AIFeatures = ({ articleUrl, summary }) => {
                             {claim.verdict}
                           </span>
                           {claim.confidence && (
-                            <span className="text-xs text-gray-500">
+                            <span className="text-xs text-gray-500 dark:text-gray-400">
                               Confidence: {claim.confidence}%
                             </span>
                           )}

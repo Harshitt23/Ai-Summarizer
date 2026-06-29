@@ -10,9 +10,86 @@
   transition: background 0.4s ease;
 }
 
-/* Dark mode background */
+/* Dark mode background — deep animated nebula */
 .dark .animated-background {
-  background: linear-gradient(135deg, #070714 0%, #0b0d20 25%, #0a1628 50%, #0d1117 75%, #0f0f1a 100%);
+  background: linear-gradient(135deg, #0a0a1f 0%, #0d1030 22%, #0a1838 48%, #140a2e 72%, #0a0a1f 100%);
+  background-size: 200% 200%;
+  animation: dark-gradient-shift 24s ease infinite;
+}
+
+/* Aurora / nebula glow layer (dark mode only) */
+.dark .animated-background::before {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 22%, rgba(99, 102, 241, 0.42), transparent 62%),
+    radial-gradient(ellipse 55% 48% at 85% 15%, rgba(139, 92, 246, 0.40), transparent 62%),
+    radial-gradient(ellipse 58% 48% at 62% 82%, rgba(56, 189, 248, 0.30), transparent 62%),
+    radial-gradient(ellipse 48% 38% at 28% 78%, rgba(168, 85, 247, 0.36), transparent 62%),
+    radial-gradient(ellipse 40% 35% at 50% 45%, rgba(79, 70, 229, 0.22), transparent 65%);
+  filter: blur(52px);
+  animation: aurora-drift 22s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Twinkling starfield (dark mode only) */
+.dark .animated-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 12% 18%, rgba(255, 255, 255, 1), transparent),
+    radial-gradient(1.5px 1.5px at 28% 42%, rgba(199, 210, 254, 0.95), transparent),
+    radial-gradient(2px 2px at 47% 12%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1.5px 1.5px at 63% 33%, rgba(196, 181, 253, 0.95), transparent),
+    radial-gradient(2px 2px at 78% 58%, rgba(255, 255, 255, 1), transparent),
+    radial-gradient(1.5px 1.5px at 88% 22%, rgba(165, 243, 252, 0.95), transparent),
+    radial-gradient(1.5px 1.5px at 35% 72%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 55% 88%, rgba(221, 214, 254, 0.95), transparent),
+    radial-gradient(1.5px 1.5px at 8% 63%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 72% 78%, rgba(199, 210, 254, 0.9), transparent),
+    radial-gradient(2px 2px at 92% 85%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1.5px 1.5px at 18% 92%, rgba(196, 181, 253, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 40% 25%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2px 2px at 68% 8%, rgba(221, 214, 254, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 95% 45%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1.5px 1.5px at 5% 38%, rgba(199, 210, 254, 0.85), transparent);
+  background-repeat: no-repeat;
+  animation: twinkle 5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes dark-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes aurora-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  33% {
+    transform: translate3d(3%, -2%, 0) scale(1.08);
+    opacity: 1;
+  }
+  66% {
+    transform: translate3d(-3%, 2%, 0) scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Keep shapes above the aurora & starfield layers */
+.dark .floating-shapes {
+  z-index: 1;
 }
 
 .dark .shape {
